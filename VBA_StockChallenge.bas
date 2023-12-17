@@ -1,25 +1,22 @@
 Attribute VB_Name = "VBA_StockChallenge"
 Sub stockData()
 
-For Each ws In Worksheets 'loops through every worksheet
+For Each ws In Worksheets 'loops through every worksheet in a workbook
 
     'establish variables
     Dim lastRow As Long
     Dim openPrice As Double
     Dim closePrice As Double
     Dim rowCount As Long
-    
-    Dim testCount As Integer
-    testCount = 2
-    
+      
 
     lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row  'finds the last row available
-    rowCount = 2
-    openPrice = 0
-    closePrice = 0
+    rowCount = 2  ' starting row for ticker summery breakdown
+    openPrice = 0 ' resets price when moving to a new sheet
+    closePrice = 0  ' resets price when moving to a new sheet
 
     
-    ' creates row header titles for breakdown
+    ' creates row header titles for ticker summery
         ws.Range("I1").Value = "Ticker"
         ws.Range("J1").Value = "Yearly Change"
         ws.Range("K1").Value = "Percent Change"
@@ -28,15 +25,11 @@ For Each ws In Worksheets 'loops through every worksheet
         ws.Range("I1:L1").Font.Bold = True
         ws.Range("I:I, J:J, K:K, L:L").Columns.AutoFit
 
-        
-
-        
-    
 
     
-    For I = 2 To lastRow   'loops through every row on a specific worksheet
+    For I = 2 To lastRow   'loops through every row on a particular worksheet and creates ticker summery chart
     
-        If ws.Cells(I - 1, 1) <> ws.Cells(I, 1) Then 'this is a new record
+        If ws.Cells(I - 1, 1) <> ws.Cells(I, 1) Then 'creates a new ticker summery record
 
             openPrice = ws.Cells(I, 3) ' sets open price
             
@@ -47,7 +40,7 @@ For Each ws In Worksheets 'loops through every worksheet
             
             rowCount = rowCount + 1 ' advances row count to the next line for the next record
  
-        Else ' updating existing record
+        Else ' updating existing ticker summery record
             closePrice = ws.Cells(I, 6) ' updates close price
             ws.Cells(rowCount - 1, 10).Value = closePrice - openPrice ' change in price for the year
             ws.Cells(rowCount - 1, 11).Value = ((closePrice - openPrice) / openPrice) ' percent change
@@ -60,19 +53,19 @@ For Each ws In Worksheets 'loops through every worksheet
         
         
         
-        ' conditional formatting for % change
-        If ws.Cells(rowCount - 1, 11) > 0 Then  ' positive = green
-            ws.Cells(rowCount - 1, 11).Interior.ColorIndex = 4
+        ' conditional formatting for yearly change
+        If ws.Cells(rowCount - 1, 10) > 0 Then  ' positive = green
+            ws.Cells(rowCount - 1, 10).Interior.ColorIndex = 4
         
             Else  'negative = red
-                ws.Cells(rowCount - 1, 11).Interior.ColorIndex = 3
+                ws.Cells(rowCount - 1, 10).Interior.ColorIndex = 3
 
         End If
         
 
     Next I
     
-    ' Creates and populates summery table
+    ' Once the ticker summery chart is complete, it creates and populates the summery report
     
         ' creates table for summery report
         ws.Range("P1").Value = "Ticker"
