@@ -18,10 +18,10 @@ Once both charts are complete, the script moves onto the next worksheet in the w
 # Results
 
 ![Results 2018 Tab](/images/results_2018.JPG)
-Results 2018 Tab
+*Results 2018 Tab*
 
 ![Results 2019 Tab](/images/results_2019.JPG)
-Results 2019 Tab
+*Results 2019 Tab*
 
 ![Results 2020 Tab](/images/results_2020.JPG)
-Results 2020 Tab
+*Results 2020 Tab*
