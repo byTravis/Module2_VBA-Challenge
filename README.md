@@ -23,5 +23,5 @@ Results 2018 Tab
 ![Results 2019 Tab](/images/results_2019.JPG)
 Results 2019 Tab
 
-![Results 2020 Tab](/images/images/results_2020.JPG)
+![Results 2020 Tab](/images/results_2020.JPG)
 Results 2020 Tab
