@@ -8,13 +8,11 @@ For Each ws In Worksheets 'loops through every worksheet in a workbook
     Dim openPrice As Double
     Dim closePrice As Double
     Dim rowCount As Long
-      
 
     lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row  'finds the last row available
     rowCount = 2  ' starting row for ticker summery breakdown
     openPrice = 0 ' resets price when moving to a new sheet
     closePrice = 0  ' resets price when moving to a new sheet
-
     
     ' creates row header titles for ticker summery
         ws.Range("I1").Value = "Ticker"
@@ -26,7 +24,6 @@ For Each ws In Worksheets 'loops through every worksheet in a workbook
         ws.Range("I:I, J:J, K:K, L:L").Columns.AutoFit
 
 
-    
     For I = 2 To lastRow   'loops through every row on a particular worksheet and creates ticker summery chart
     
         If ws.Cells(I - 1, 1) <> ws.Cells(I, 1) Then 'creates a new ticker summery record
@@ -49,8 +46,6 @@ For Each ws In Worksheets 'loops through every worksheet in a workbook
             ws.Cells(rowCount - 1, 12).Value = ws.Cells(rowCount - 1, 12).Value + ws.Cells(I, 7) ' updates total volume
 
         End If
-        
-        
         
         
         ' conditional formatting for yearly change
@@ -77,7 +72,6 @@ For Each ws In Worksheets 'loops through every worksheet in a workbook
         ws.Range("O2:O4, O1:Q1").Font.Bold = True
         ws.Range("Q2:Q3").NumberFormat = "0.00%" ' formats number as a percentage
         
-        
         'finds Greatest % Increase
         maxVal = Application.WorksheetFunction.Max(ws.Range("K:K"))
         maxRow = Application.WorksheetFunction.Match(maxVal, ws.Range("K:K"), 0)
@@ -95,20 +89,11 @@ For Each ws In Worksheets 'loops through every worksheet in a workbook
         maxVolRow = Application.WorksheetFunction.Match(maxVolVal, ws.Range("L:L"), 0)
         ws.Range("P4").Value = ws.Cells(maxVolRow, 9).Value
         ws.Range("Q4").Value = ws.Cells(maxVolRow, 12).Value
-    
-
         
     ' autofits columns so whole value is displayed
     ws.Range("I:Q").Columns.AutoFit
     
-    
-
-
 
 Next ws  ' goes to next worksheet
     
-
 End Sub
-
-
-
