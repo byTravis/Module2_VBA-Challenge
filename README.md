@@ -1,7 +1,7 @@
 # VBA Challenge
 Week 2 - Data Analytics Boot Camp - University of Oregon
 
-![VBA Challenge](/images/banner.jpg)
+![VBA Challenge](/images/banner1.jpg)
 
 ## Instructions
 Create a script that loops through all the stocks for one year and outputs the following information:
