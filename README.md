@@ -1,5 +1,6 @@
 # VBA Challenge
 Week 2 - Data Analytics Boot Camp - University of Oregon
+
 ![VBA Challenge](/images/banner.jpg)
 
 ## Instructions
